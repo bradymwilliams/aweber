@@ -1,25 +1,13 @@
-import { useState } from "react";
-
-import "./App.css";
+import PasswordInput from "./lib/password-input";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1 className="text-4xl font-bold">Aweber</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="p-2 bg-gray-900 text-white min-h-screen flex flex-col justify-center items-center gap-4 w-full max-w-[400px] mx-auto">
+      <h1 className="text-4xl font-bold text-center">
+        AWeber Password Checker
+      </h1>
+      <PasswordInput />
+    </div>
   );
 }
 

@@ -1,4 +1,9 @@
-export const validatePasswordLength = (password: string, minLength = 6) => {
+export const PASSWORD_MIN_LENGTH = 6;
+
+export const validatePasswordLength = (
+  password: string,
+  minLength = PASSWORD_MIN_LENGTH
+) => {
   return password.length >= minLength;
 };
 
@@ -15,7 +20,7 @@ export const validatePasswordNumber = (password: string) => {
 };
 
 export const validatePasswordSpecialChar = (password: string) => {
-  return /[!@#$%^&*()_\-+=[\]{}|:;"'<,>.?]/.test(password);
+  return /[!@#$%^&*()_\-+=[\]{}|:;"'<,>.]/.test(password);
 };
 
 export const doPasswordsMatch = (password: string, confirmPassword: string) => {

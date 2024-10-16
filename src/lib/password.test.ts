@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test, describe } from "vitest";
 import {
   validatePasswordLength,
   validatePasswordUppercase,
@@ -6,8 +6,7 @@ import {
   validatePasswordNumber,
   validatePasswordSpecialChar,
   doPasswordsMatch,
-} from "../src/lib/password";
-import { describe } from "node:test";
+} from "./password";
 
 describe("Password validation", () => {
   test("validatePasswordLength should return true for passwords with length >= 6", () => {
@@ -32,10 +31,13 @@ describe("Password validation", () => {
   });
 
   test("validatePasswordSpecialChar should return true for passwords with special characters", () => {
-    const chars = `!@#$%^&*()_-+=[]{}|:;"'<,>.?`;
+    const chars = `!@#$%^&*()_-+=[]{}|:;"'<,>.`;
     for (const char of chars) {
       expect(validatePasswordSpecialChar(`Abc123${char}`)).toBe(true);
     }
+
+    expect(validatePasswordSpecialChar("Abc123")).toBe(false);
+    expect(validatePasswordSpecialChar("Abc123?")).toBe(false); // sneaky ? is not a special character
   });
 
   test("doPasswordsMatch should return true for matching passwords", () => {
